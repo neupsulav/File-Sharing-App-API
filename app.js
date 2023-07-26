@@ -6,12 +6,15 @@ const connectDB = require("./connection/connect");
 const noRoute = require("./middlewares/noRoute");
 const errorHandlerMiddleware = require("./middlewares/ErrorHandlerMiddleware");
 const uploadRouter = require("./routers/files");
+const showRouter = require("./routers/show");
 
 //port
 const port = process.env.port || 3000;
 
 //routes
+app.use(express.json());
 app.use("/api/file", uploadRouter);
+app.use("/files", showRouter);
 
 //error handler middleware
 app.use(errorHandlerMiddleware);
