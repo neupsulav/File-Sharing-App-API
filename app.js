@@ -7,6 +7,7 @@ const noRoute = require("./middlewares/noRoute");
 const errorHandlerMiddleware = require("./middlewares/ErrorHandlerMiddleware");
 const uploadRouter = require("./routers/files");
 const showRouter = require("./routers/show");
+const downloadRouter = require("./routers/download");
 
 //port
 const port = process.env.port || 3000;
@@ -15,6 +16,7 @@ const port = process.env.port || 3000;
 app.use(express.json());
 app.use("/api/file", uploadRouter);
 app.use("/files", showRouter);
+app.use("/files/download", downloadRouter);
 
 //error handler middleware
 app.use(errorHandlerMiddleware);
